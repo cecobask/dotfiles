@@ -4,10 +4,9 @@ set -e
 set -o pipefail
 set -u
 
-# shellcheck disable=SC1091
-source "$HOME/.zshenv"
-
 if [ ! -d "$ZSH" ]; then
+	# shellcheck disable=SC1091
+	source "$HOME/.zshenv"
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)" "" --unattended --keep-zshrc
 else
 	echo "skipped installing ohmyzsh"

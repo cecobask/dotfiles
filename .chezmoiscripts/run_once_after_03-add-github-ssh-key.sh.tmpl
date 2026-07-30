@@ -4,7 +4,9 @@ set -e
 set -o pipefail
 set -u
 
-brew install gh
+# shellcheck disable=SC1091
+source "$HOME/.zshenv"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 if ! gh auth status >/dev/null 2>&1; then
   gh auth login \
@@ -15,19 +17,20 @@ if ! gh auth status >/dev/null 2>&1; then
     --web \
     --clipboard
 else
-  echo "skipped logging in to github"
+  echo "skipped github login"
 fi
 
 SERIAL_NUM=$(ioreg -ard1 -c IOPlatformExpertDevice | plutil -extract 0.IOPlatformSerialNumber raw -)
+SSH_PUBLIC_KEY={{ printf "%s/%s.pub" .sshDir .sshKeyName | quote }}
 
 if [[ $(gh ssh-key list | grep -F "$SERIAL_NUM" | grep -c authentication) -eq 0 ]]; then
-  gh ssh-key add {{ .sshPublicKeyPath | quote }} --type=authentication --title="$SERIAL_NUM"
+  gh ssh-key add "$SSH_PUBLIC_KEY" --type=authentication --title="$SERIAL_NUM"
 else
-  echo "skipped adding ssh authentication key to github"
+  echo "skipped adding github ssh authentication key"
 fi
 
 if [[ $(gh ssh-key list | grep -F "$SERIAL_NUM" | grep -c signing) -eq 0 ]]; then
-  gh ssh-key add {{ .sshPublicKeyPath | quote }} --type=signing --title="$SERIAL_NUM"
+  gh ssh-key add "$SSH_PUBLIC_KEY" --type=signing --title="$SERIAL_NUM"
 else
-  echo "skipped adding ssh signing key to github"
+  echo "skipped adding github ssh signing key"
 fi
