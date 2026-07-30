@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+set -e
+set -o pipefail
+set -u
+
+if ! gh auth status >/dev/null 2>&1; then
+  gh auth login \
+    --hostname=github.com \
+    --git-protocol=ssh \
+    --skip-ssh-key \
+    --scopes=admin:public_key,admin:ssh_signing_key \
+    --web \
+    --clipboard
+else
+  echo "skipped logging in to github"
+fi
+
+SERIAL_NUM=$(ioreg -ard1 -c IOPlatformExpertDevice | plutil -extract 0.IOPlatformSerialNumber raw -)
+
+if [[ $(gh ssh-key list | grep -F "$SERIAL_NUM" | grep -c authentication) -eq 0 ]]; then
+  gh ssh-key add {{ .sshPublicKeyPath | quote }} --type=authentication --title="$SERIAL_NUM"
+else
+  echo "skipped adding ssh authentication key to github"
+fi
+
+if [[ $(gh ssh-key list | grep -F "$SERIAL_NUM" | grep -c signing) -eq 0 ]]; then
+  gh ssh-key add {{ .sshPublicKeyPath | quote }} --type=signing --title="$SERIAL_NUM"
+else
+  echo "skipped adding ssh signing key to github"
+fi

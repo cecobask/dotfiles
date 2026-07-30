@@ -1,0 +1,88 @@
+tap:
+  common:
+  - derailed/k9s
+  - fluxcd/tap
+  - terraform-linters/tap
+  personal:
+  - home-operations/tap
+  - libkrun/krun
+  - siderolabs/tap
+  work: []
+
+brew:
+  common:
+  - awscli
+  - chezmoi
+  - coreutils
+  - derailed/k9s/k9s
+  - fluxcd/tap/flux
+  - fzf
+  - gh
+  - git
+  - go
+  - golangci-lint
+  - helm
+  - jq
+  - kubectl
+  - kubectx
+  - kustomize
+  - make
+  - mas
+  - podman
+  - shellcheck
+  - shfmt
+  - tfenv
+  - tree
+  - vim
+  - yq
+  personal:
+  - b2-tools
+  - direnv
+  - kopia
+  - libkrun/krun/krunkit
+  - rclone
+  - siderolabs/tap/talosctl
+  - velero
+  work: []
+
+cask:
+  common:
+  - bruno
+  - ghostty
+  - google-chrome
+  - karabiner-elements
+  - logi-options+
+  - monitorcontrol
+  - raycast
+  - terraform-linters/tap/tflint
+  - visual-studio-code
+  - zoom
+  personal:
+  - home-operations/tap/flate
+  - kopiaui
+  - podman-desktop
+  - utm
+  - whatsapp
+  work: []
+
+mas:
+  common:
+  - name: Bitwarden
+    id: 1352778147
+  personal:
+  - name: WireGuard
+    id: 1451685025
+  work: []
+
+vscode:
+  common:
+  - eamodio.gitlens
+  - golang.go
+  - hashicorp.terraform
+  - kennylong.kubernetes-yaml-formatter
+  - mkhl.shfmt
+  - ms-kubernetes-tools.vscode-kubernetes-tools
+  - redhat.vscode-yaml
+  - timonwong.shellcheck
+  personal: []
+  work: []

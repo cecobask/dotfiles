@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -e
+set -o pipefail
+set -u
+
+if [[ ! -f {{ .sshPrivateKeyPath | quote }} ]]; then
+  echo "creating ssh key"
+	mkdir -p "$HOME/.ssh"
+	ssh-keygen -t ed25519 -C {{ .email | quote }} -f {{ .sshPrivateKeyPath | quote }} -N ''
+	eval "$(ssh-agent -s)"
+	ssh-add --apple-use-keychain {{ .sshPrivateKeyPath | quote }}
+else
+	echo "skipped creating ssh key"
+fi

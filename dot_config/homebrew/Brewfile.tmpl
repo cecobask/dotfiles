@@ -1,0 +1,45 @@
+{{ range .tap.common -}}
+tap {{ . | quote }}, trusted: true
+{{ end }}
+{{- range .tap.personal -}}
+tap {{ . | quote }}, trusted: true
+{{ end }}
+{{- range .tap.work -}}
+tap {{ . | quote }}, trusted: true
+{{ end }}
+{{ range .brew.common -}}
+brew {{ . | quote }}
+{{ end }}
+{{- range .brew.personal -}}
+brew {{ . | quote }}
+{{ end }}
+{{- range .brew.work -}}
+brew {{ . | quote }}
+{{ end }}
+{{ range .cask.common -}}
+cask {{ . | quote }}
+{{ end }}
+{{- range .cask.personal -}}
+cask {{ . | quote }}
+{{ end }}
+{{- range .cask.work -}}
+cask {{ . | quote }}
+{{ end }}
+{{ range .mas.common -}}
+mas {{ .name | quote }}, id: {{ .id }}
+{{ end }}
+{{- range .mas.personal -}}
+mas {{ .name | quote }}, id: {{ .id }}
+{{ end }}
+{{- range .mas.work -}}
+mas {{ .name | quote }}, id: {{ .id }}
+{{ end }}
+{{ range .vscode.common -}}
+vscode {{ . | quote }}
+{{ end }}
+{{- range .vscode.personal -}}
+vscode {{ . | quote }}
+{{ end }}
+{{- range .vscode.work -}}
+vscode {{ . | quote }}
+{{ end }}
