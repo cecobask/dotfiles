@@ -4,6 +4,8 @@ set -e
 set -o pipefail
 set -u
 
+brew install gh
+
 if ! gh auth status >/dev/null 2>&1; then
   gh auth login \
     --hostname=github.com \
