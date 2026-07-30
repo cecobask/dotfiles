@@ -17,5 +17,5 @@ else
 	echo "skipped installing xcode command line tools"
 fi
 
-curl -fsLS https://get.chezmoi.io | sh
+sh <(curl -fsLS https://get.chezmoi.io)
 bin/chezmoi init cecobask --apply --force --purge-binary && rmdir bin
