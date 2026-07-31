@@ -1,5 +1,6 @@
 data:
-  profile: {{ promptChoiceOnce . "profile" "Select profile" (list "personal" "work") }}
-  email: {{ promptStringOnce . "email" "Enter email address" }}
-  sshDir: {{ printf "%s/.ssh" .chezmoi.homeDir }}
+  firstName: {{ promptStringOnce . "firstName" "Enter first name" "Tsvetoslav" }}
+  lastName: {{ promptStringOnce . "lastName" "Enter last name" "Dimov" }}
+  email: {{ promptStringOnce . "email" "Enter email address" "baskski@gmail.com" }}
+  profile: {{ promptChoiceOnce . "profile" "Select profile" (list "personal" "work") "personal" }}
   sshKeyName: {{ promptStringOnce . "sshKeyName" "Enter SSH key name" "id_ed25519" }}

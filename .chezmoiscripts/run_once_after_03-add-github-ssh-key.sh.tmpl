@@ -21,7 +21,7 @@ else
 fi
 
 SERIAL_NUM=$(ioreg -ard1 -c IOPlatformExpertDevice | plutil -extract 0.IOPlatformSerialNumber raw -)
-SSH_PUBLIC_KEY={{ printf "%s/%s.pub" .sshDir .sshKeyName | quote }}
+SSH_PUBLIC_KEY={{ printf "%s/.ssh/%s.pub" .chezmoi.homeDir .sshKeyName | quote }}
 
 if [[ $(gh ssh-key list | grep -F "$SERIAL_NUM" | grep -c authentication) -eq 0 ]]; then
   gh ssh-key add "$SSH_PUBLIC_KEY" --type=authentication --title="$SERIAL_NUM"

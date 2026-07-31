@@ -4,7 +4,7 @@ set -e
 set -o pipefail
 set -u
 
-SSH_PRIVATE_KEY={{ printf "%s/%s" .sshDir .sshKeyName | quote }}
+SSH_PRIVATE_KEY={{ printf "%s/.ssh/%s" .chezmoi.homeDir .sshKeyName | quote }}
 if [[ ! -f "$SSH_PRIVATE_KEY" ]]; then
 	mkdir -p "$HOME/.ssh"
 	ssh-keygen -t ed25519 -C {{ .email | quote }} -f "$SSH_PRIVATE_KEY" -N ''
