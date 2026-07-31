@@ -1,0 +1,12 @@
+.idea
+.vscode
+.env
+.envrc
+node_modules
+.DS_Store
+
+.terraform
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json

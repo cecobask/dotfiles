@@ -1,0 +1,20 @@
+[user]
+email = {{ .email }}
+name = {{ printf "%s %s" .firstName .lastName }}
+signingkey = {{ printf "%s/.ssh/%s.pub" .chezmoi.homeDir .sshKeyName }}
+
+[commit]
+gpgsign = true
+template = {{ printf "%s/.config/git/message" .chezmoi.homeDir }}
+
+[core]
+excludesFile = {{ printf "%s/.config/git/ignore" .chezmoi.homeDir }}
+
+[init]
+defaultBranch = main
+
+[pull]
+rebase = true
+
+[gpg]
+format = ssh
