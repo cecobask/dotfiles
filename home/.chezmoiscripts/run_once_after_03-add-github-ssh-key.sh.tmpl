@@ -8,7 +8,7 @@ set -u
 source "$HOME/.zshenv"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-if ! gh auth status >/dev/null 2>&1; then
+if ! gh auth status &>/dev/null; then
   gh auth login \
     --hostname=github.com \
     --git-protocol=ssh \
@@ -17,7 +17,7 @@ if ! gh auth status >/dev/null 2>&1; then
     --web \
     --clipboard
 else
-  echo "skipped github login"
+  echo "skipped github authentication"
 fi
 
 SERIAL_NUM=$(ioreg -ard1 -c IOPlatformExpertDevice | plutil -extract 0.IOPlatformSerialNumber raw -)

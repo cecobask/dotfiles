@@ -4,6 +4,10 @@ set -e
 set -o pipefail
 set -u
 
-sudo cp /etc/pam.d/sudo_local.template /etc/pam.d/sudo_local
-sudo sed -i '' '/^[[:space:]]*#.*pam_tid\.so/s/^[[:space:]]*#//' /etc/pam.d/sudo_local
-echo "enabled touch id for sudo"
+if bioutil -r &>/dev/null; then
+	sudo cp /etc/pam.d/sudo_local.template /etc/pam.d/sudo_local
+	sudo sed -i '' '/^[[:space:]]*#.*pam_tid\.so/s/^[[:space:]]*#//' /etc/pam.d/sudo_local
+	echo "enabled touch id for sudo"
+else
+	echo "skipped enabling touch id for sudo"
+fi
