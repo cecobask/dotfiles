@@ -1,0 +1,5 @@
+Host github.com
+  User git
+  IdentityFile {{ printf "%s/.ssh/%s" .chezmoi.homeDir .sshKeyName }}
+  AddKeysToAgent yes
+  IdentitiesOnly yes

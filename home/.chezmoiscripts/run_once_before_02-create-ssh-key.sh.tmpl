@@ -8,8 +8,6 @@ SSH_PRIVATE_KEY={{ printf "%s/.ssh/%s" .chezmoi.homeDir .sshKeyName | quote }}
 if [[ ! -f "$SSH_PRIVATE_KEY" ]]; then
 	mkdir -p "$HOME/.ssh"
 	ssh-keygen -t ed25519 -C {{ .email | quote }} -f "$SSH_PRIVATE_KEY" -N ''
-	eval "$(ssh-agent -s)"
-	ssh-add --apple-use-keychain "$SSH_PRIVATE_KEY"
 else
 	echo "skipped creating ssh key"
 fi
