@@ -1,0 +1,2 @@
+# remove once https://github.com/ghostty-org/ghostty/issues/10749 is fixed
+keybind = super+v=paste_from_clipboard
