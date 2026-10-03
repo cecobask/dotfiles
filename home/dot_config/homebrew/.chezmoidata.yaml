@@ -4,8 +4,8 @@ tap:
   - fluxcd/tap
   - terraform-linters/tap
   personal:
-  - libkrun/krun
   - siderolabs/tap
+  - slp/krun
   work: []
 
 brew:
@@ -38,9 +38,9 @@ brew:
   personal:
   - b2-tools
   - kopia
-  - libkrun/krun/krunkit
   - rclone
   - siderolabs/tap/talosctl
+  - slp/krun/krunkit
   - velero
   work: []
 
