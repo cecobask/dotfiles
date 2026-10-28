@@ -57,6 +57,7 @@ cask:
   - visual-studio-code
   - zoom
   personal:
+  - discord
   - kopiaui
   - podman-desktop
   - whatsapp
