@@ -33,6 +33,7 @@ brew:
   - shfmt
   - tfenv
   - tree
+  - uv
   - vim
   - yq
   personal:
