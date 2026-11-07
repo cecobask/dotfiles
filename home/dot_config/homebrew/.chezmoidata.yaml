@@ -85,3 +85,8 @@ vscode:
   - timonwong.shellcheck
   personal: []
   work: []
+
+go:
+  common: []
+  personal: []
+  work: []

@@ -43,3 +43,12 @@ vscode {{ . | quote }}
 {{- range .vscode.work -}}
 vscode {{ . | quote }}
 {{ end }}
+{{ range .go.common -}}
+go {{ . | quote }}
+{{ end }}
+{{- range .go.personal -}}
+go {{ . | quote }}
+{{ end }}
+{{- range .go.work -}}
+go {{ . | quote }}
+{{ end }}
