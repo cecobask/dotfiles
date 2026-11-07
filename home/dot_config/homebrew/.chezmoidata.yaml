@@ -38,6 +38,7 @@ brew:
   - yq
   personal:
   - b2-tools
+  - jsonnet
   - kopia
   - rclone
   - siderolabs/tap/talosctl
@@ -88,5 +89,6 @@ vscode:
 
 go:
   common: []
-  personal: []
+  personal:
+  - github.com/jsonnet-bundler/jsonnet-bundler/cmd/jb
   work: []
